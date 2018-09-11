@@ -1,6 +1,7 @@
 package com.ejemplo.demo.controlador;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,9 +36,19 @@ public class UserControlador {
 		if(!this.validate(user)) {
 			return new RestResponse(HttpStatus.NOT_ACCEPTABLE.value(),"los campos obligatorios no estan diligenciados");
 		}
+		
 		this.userServicios.save(user);
+		
 		return new RestResponse(HttpStatus.OK.value(),"operacion exitosa");
+	
 	}
+	
+	@RequestMapping(value="/getUsers", method=RequestMethod.GET)
+	public List<Usuarios> getUsers() {
+		return this.userServicios.findAll();
+	}
+	
+	
 	private boolean validate(Usuarios user) {
 		boolean isValid=true;
 		
