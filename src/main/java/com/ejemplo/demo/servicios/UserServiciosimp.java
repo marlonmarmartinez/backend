@@ -24,5 +24,12 @@ public class UserServiciosimp implements UserServicios {
 		
 		return this.userRepository.findAll();
 	}
+
+	@Override
+	public void deleteUsers(Long id) {
+		
+		this.userRepository.deleteById(id);
+		
+	}
 	
 }

@@ -12,4 +12,5 @@ public interface UserRepository extends JpaRepository<Usuarios, Long> {
 	Usuarios save(Usuarios user);
 	
 	//List<Usuarios>findAll();
+	
 }

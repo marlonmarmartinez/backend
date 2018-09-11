@@ -21,5 +21,12 @@ public interface UserServicios {
 	List<Usuarios> findAll();
 
 	
+	/**
+	 * elimina un usuario con el id recibido
+	 * @param id
+	 */
+	void deleteUsers(Long id);
+
+	
 
 }

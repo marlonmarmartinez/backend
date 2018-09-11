@@ -48,6 +48,19 @@ public class UserControlador {
 		return this.userServicios.findAll();
 	}
 	
+	@RequestMapping(value="/deleteUsers", method=RequestMethod.POST)
+	public void deleteUsers(@RequestBody String userJson) throws Exception {
+
+		this.mapper=new ObjectMapper();
+		
+		Usuarios user=this.mapper.readValue(userJson, Usuarios.class);
+		
+		if(user.getId()==null) {
+			throw new Exception("el Id esta nulo");
+		}
+		this.userServicios.deleteUsers(user.getId());
+	}
+	
 	
 	private boolean validate(Usuarios user) {
 		boolean isValid=true;
